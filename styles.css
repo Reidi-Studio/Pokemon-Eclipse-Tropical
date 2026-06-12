@@ -1,0 +1,147 @@
+body {
+    background-color: rgb(27,27,27)
+}
+
+.mainTitle{
+    color:rgb(36, 58, 182);
+}
+
+.tittleWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+}
+
+.boton{
+	font-family: monospace;
+	font-size: 14px;
+	text-decoration: none;
+	color: #fff;
+	transition: .3s;
+}
+
+.boton:hover{
+	color: rgb(175, 175, 175);
+}
+
+.boton:active{
+	transform: scale(0.9);
+}
+
+.div_connections{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 20rem;
+    height: 100%;
+    margin: 10px;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins Light';
+}
+.aside{
+    height: 100%;
+    width: 300px;
+    padding: 10px;
+    background:linear-gradient(
+	0deg,
+	rgb(0, 0, 0)20%,
+	rgb(26, 118, 223)80%
+	);
+    color: #fff;
+    position: fixed;
+    transition: all .4s;
+}
+.option{
+    text-decoration: none;
+    color: #fff;
+}
+.head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.img{
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.bx-menu{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.profile{
+    display: flex;
+    align-items: center;
+}
+.options div{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius:10px;
+    font-size: 1.1rem;
+    
+}
+.options div:hover{
+    background-color: rgba(255,255,255,0.254);
+    transition: all .4s ease-in-out;
+}
+.options img{
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 10px;
+}
+.aside.active{
+    width: 70px;
+    transition: all .4s ease;
+}
+.aside.active .option,
+.aside.active .profile{
+    display: none;
+}
+.aside.active .head img {
+    margin: auto;
+}
+.favorite{
+    margin-left: 5rem;
+}
+.optionsA{
+    width: 11rem;
+	height: 2.5rem;
+    margin: 3px;
+	margin-left: 5rem;
+	padding: 4px;
+	font-family: monospace;
+	font-size: 14px;
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    flex-direction: row;
+	border: 0;
+	background-image: linear-gradient(
+		150deg,
+		rgb(149, 0, 255),
+		rgb(0, 103, 172),
+		rgb(0, 68, 114)
+	);
+	border-radius: 8px;
+	color: #fff;
+	transition: .3s;
+}
+.optionsA img {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 10px;
+}

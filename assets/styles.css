@@ -1,0 +1,79 @@
+body {
+    background-color: rgb(27,27,27)
+}
+
+.mainTitle{
+    color: rgb(36, 58, 182);
+}
+
+.tittleWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 100%;
+}
+
+.navBar{
+    align-items: center;
+    align-content: center;
+    background:linear-gradient(
+	90deg,
+	rgb(0, 0, 0)20%,
+	rgb(26, 118, 223)80%
+	);
+    height: 38px;
+    width: 100%;
+}
+
+.bottom{
+    text-decoration: none;
+    color: rgb(86, 127, 214);
+    margin: 10px;
+	border: none;
+	background: none;
+}
+:hover.bottom{
+    color: rgb(0, 247, 255);
+}
+
+.boton{
+	width: 10rem;
+	height: 2.5rem;
+    margin: 3px;
+	padding: 4px;
+	font-family: 'Lucida Sans Unicode';
+	font-size: 14px;
+	text-decoration: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	background-image: linear-gradient(
+		150deg,
+		rgb(149, 0, 255),
+		rgb(0, 103, 172),
+		rgb(0, 68, 114)
+	);
+	border-radius: 8px;
+	color: #fff;
+	transition: .3s;
+}
+
+.boton:hover{
+	color: rgb(175, 175, 175);
+}
+
+.boton:active{
+	transform: scale(0.9);
+}
+
+.div_connections{
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    width: 20rem;
+    height: 100%;
+    margin: 10px;
+}
