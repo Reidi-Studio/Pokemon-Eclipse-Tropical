@@ -1,0 +1,10 @@
+.number{
+    margin-left: 92%;
+    color: white;
+}
+@media (max-width: 420px) {  /* ← Aquí está la corrección */
+    .number{
+        margin-left: 10%;
+        color: white;
+    }
+}

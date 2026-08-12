@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="../assets/img/pageicon.png" type="image/x-icon">
+    <title>Pokedex Regional</title> 
+</head>
+<body>
+    <div class="titleWrap">
+        <h1 class="mainTitle">Pokedex</h1>
+    </div>
+    <header>
+        <div class="navBar">
+            <a href="../index.html" class="bottom">Inicio</a>
+            <a href="./gyms.html" class="bottom">Gimnasios</a>
+            <a href="./items.html" class="bottom">Items</a>
+            <a href="./pokedex.html" class="bottom">Pokedex</a>
+            
+            <!-- NUEVO: Wrapper con el input + pseudo-elemento -->
+            <div class="search-wrapper">
+                <input type="search" class="searchInput" id="searchInput" placeholder="🔍 Buscar Pokémon" autocomplete="off">
+            </div>
+        </div>
+    </header>
+    <div class="pokeList" id="pokeList">
+        <!-- Aquí van los Pokémon -->
+    </div>
+    <script src="../JS/pokelist_ofline.js"></script>
+</body>
+</html>

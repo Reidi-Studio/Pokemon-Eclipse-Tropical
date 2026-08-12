@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="../../assets/img/317.png" type="image/x-icon">
+        <link rel="stylesheet" href="styles">
+        <title>Swalot - Propiedades</title> 
+        <style>
+            *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+            body{user-select: none;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:20px;}
+            .container{max-width:800px;width:100%;background:rgba(255,255,255,0.03);border-radius:20px;padding:30px;border:1px solid rgba(255,255,255,0.06);}
+            .back{font-size:3rem;color:#fff;text-decoration:none;display:inline-block;transition:.3s;line-height:1;}
+            .back:hover{transform:scale(1.15);}
+            .info{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin:10px 0;}
+            .name-container h1{font-size:2.2rem;font-weight:700;color:#fff;}
+            .types{display:flex;gap:8px;margin-top:5px;flex-wrap:wrap;}
+            .type{padding:4px 14px;border-radius:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;color:#fff;}
+            .type.normal{background:#A8A878;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.fire{background:#F08030;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.water{background:#6890F0;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.electric{background:#F8D030;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.grass{background:#78C850;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.ice{background:#98D8D8;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.fighting{background:#C03028;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.poison{background:#A040A0;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.ground{background:#E0C068;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.flying{background:#A890F0;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.psychic{background:#F85888;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.bug{background:#A8B820;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.rock{background:#B8A038;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.ghost{background:#705898;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.dragon{background:#7038F8;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.dark{background:#705848;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.steel{background:#B8B8D0;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .type.fairy{background:#EE99AC;display:flex; flex-direction:row;align-items:center;justify-content:center;}
+            .number-container{text-align:right;}
+            .number{color:#aaa;font-size:1.8rem;font-weight:400;}
+            .category{color:#888;font-size:0.85rem;}
+            .img-container{display:flex;justify-content:center;padding:20px 0;}
+            .img-container img{width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 4px 20px rgba(0,0,0,0.5));}
+            .section{background:rgba(255,255,255,0.03);border-radius:12px;padding:20px;margin:15px 0;border:1px solid rgba(255,255,255,0.05);}
+            .section h2{color:#ffde00;font-size:1.5rem;font-weight:300;border-bottom:1px solid rgba(255,255,255,0.05);padding-bottom:10px;margin-bottom:15px;text-align:center;}
+            
+            .estadisticabase{display:grid;gap:8px;}
+            .estadisticabase > div{display:grid;grid-template-columns:120px 1fr 40px;align-items:center;gap:10px;}
+            .estadisticabase .title{color:#aaa;font-size:0.85rem;}
+            .estadisticabase .w{color:#fff;font-weight:600;text-align:right;}
+            .estadisticabase .barHP,.bar⚔,.bar🛡,.bar🛡⚔,.bar⚔🛡,.bar🚅,.totalbar{height:8px;border-radius:1px;background:rgba(255,255,255,0.1);overflow:hidden;position:relative;}
+            
+            /* ===== BARRAS CON BORDER-RADIUS PEQUEÑO (CASI CUADRADAS) ===== */
+            .estadisticabase .barHP::after{content:'';position:absolute;left:0;top:0;height:100%;width:39.21568627450981%;background:#ff1744;border-radius:1px;}
+            .estadisticabase .bar⚔::after{content:'';position:absolute;left:0;top:0;height:100%;width:28.627450980392155%;background:#ff9100;border-radius:1px;}
+            .estadisticabase .bar🛡::after{content:'';position:absolute;left:0;top:0;height:100%;width:32.549019607843135%;background:#ffd600;border-radius:1px;}
+            .estadisticabase .bar🛡⚔::after{content:'';position:absolute;left:0;top:0;height:100%;width:28.627450980392155%;background:#2979ff;border-radius:1px;}
+            .estadisticabase .bar⚔🛡::after{content:'';position:absolute;left:0;top:0;height:100%;width:32.549019607843135%;background:#00e676;border-radius:1px;}
+            .estadisticabase .bar🚅::after{content:'';position:absolute;left:0;top:0;height:100%;width:21.568627450980394%;background:#ff4081;border-radius:1px;}
+            .estadisticabase .totalbar::after{content:'';position:absolute;left:0;top:0;height:100%;width:61.04575163398693%;background:#ffd700;border-radius:1px;}
+            
+            .weakness-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;}
+            .weakness-row{display:flex;justify-content:space-between;padding:4px 8px;border-radius:4px;background:rgba(255,255,255,0.03);}
+            .weakness-label{color:#aaa;font-size:0.85rem;}
+            .weakness-value{font-weight:700;font-size:0.9rem;}
+            .weakness-value[data-value="0"]{color:#666;}
+            .weakness-value[data-value="0.5"]{color:#4a9eff;}
+            .weakness-value[data-value="1"]{color:#fff;}
+            .weakness-value[data-value="2"]{color:#ffaa00;}
+            .weakness-value[data-value="4"]{color:#ff5959;}
+            
+            .evolution-container{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;}
+            .ev1{display:flex;align-items:center;gap:8px;}
+            .ev-card{background:rgba(255,255,255,0.05);border-radius:12px;padding:12px;text-align:center;width:130px;border:1px solid rgba(255,255,255,0.08);transition:.3s;display:block;justify-content:center;flex-direction:column;}
+            .ev-card:hover{transform:scale(1.05);background:rgba(255,255,255,0.08);}
+            .ev-header{display:flex;justify-content:space-between;font-size:0.65rem;margin-bottom:6px;padding:0 4px;}
+            .ev-level{color:#4a9eff;font-weight:600;}
+            .ev-badge{background:#ffde00;color:#1a1a2e;padding:1px 8px;border-radius:10px;font-weight:700;font-size:0.6rem;}
+            .ev-card img{width:60px;height:60px;object-fit:contain;display:block;margin:0 auto;}
+            .ev-name{color:#fff;font-size:0.8rem;font-weight:600;margin:4px 0;}
+            .arrow{color:gold;font-size:1.5rem;padding:0 4px;}
+            
+            .alturapeso{display:flex;justify-content:center;gap:40px;padding:10px 0;}
+            .alturapeso .title{color:#888;font-size:0.75rem;text-transform:uppercase;}
+            .alturapeso .estadistic{color:#fff;font-size:1.1rem;}
+            
+            .icon{display:flex;justify-content:center;padding:10px 0;}
+            .icon img{width:80px;height:80px;object-fit:contain;}
+            
+            .generation{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 0;}
+            .generation .title{color:#888;font-size:0.75rem;text-transform:uppercase;}
+            .generation p{color:#fff;}
+            .gender1{color:#6890F0;}
+            .gender2{color:#F85888;}
+            
+            .ubicacion{background:rgba(255,215,0,0.05);border-left:3px solid #ffde00;padding:15px;border-radius:8px;margin:15px 0;}
+            .ubicacion .label{color:#888;font-size:0.8rem;text-transform:uppercase;letter-spacing:1px;}
+            .ubicacion .value{color:#ffde00;font-size:1rem;margin-top:5px;}
+            
+            .no-evolution{text-align:center;padding:20px;color:#666;}
+            .no-evolution-icon{font-size:2rem;display:block;margin-bottom:10px;}
+
+            ::-webkit-scrollbar-track {background: rgb(27, 27, 27);}
+            ::-webkit-scrollbar-thumb {background: linear-gradient(180deg, #09f, #036); border-radius:5px;}
+            ::-webkit-scrollbar-thumb:hover {background: linear-gradient(180deg, #0af, #048);}
+            
+            @media(max-width:600px){.info{flex-direction:column;align-items:center;text-align:center;}.number-container{text-align:center;}.back{font-size:2.5rem;}.ev1{flex-wrap:wrap;justify-content:center;}.arrow{transform:rotate(90deg);}.weakness-grid{grid-template-columns:1fr;}.generation{grid-template-columns:1fr;}.estadisticabase > div{grid-template-columns:80px 1fr 30px;font-size:0.8rem;}}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <a href="../../connections/pokedex.html" class="back">⬅</a>
+
+            <div class="info">
+                <div class="name-container">
+                    <h1>Swalot</h1>
+                    <div class="types"><span class="type poison">Veneno</span></div>
+                </div>
+                <div class="number-container">
+                    <div class="number">#225</div>
+                </div>
+            </div>
+
+            <div class="img-container">
+                <img src="../../assets/img/317.png" alt="Swalot" onerror="this.src='../../assets/img/pokeball.svg'">
+            </div>
+
+            <div class="section">
+                <h2>Acerca de</h2>
+                <div class="alturapeso">
+                    <div class="altura"><p class="title">Altura</p><p class="estadistic">1.7m</p></div>
+                    <div class="peso"><p class="title">Peso</p><p class="estadistic">80.0kg</p></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Icono</h2>
+                <div class="icon">
+                    <img src="../../assets/img/317.png" alt="">
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Generación</h2>
+                <div class="generation">
+                    <div class="sex"><p class="title">Tasa de Género</p><p>50% ♂, 50% ♀</p></div>
+                    <div class="a"><p class="title">Tasa de Captura</p><p>75 (29%)</p></div>
+                    <div class="b"><p class="title">Amistad Base</p><p>70</p></div>
+                    <div class="habilitis"><p class="title">Habilidades</p><p>Mucosidad · Pestilencia (oculta)</p></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Estadísticas</h2>
+                <div class="estadisticabase">
+                    <div class="hp"><p class="title">HP</p><div class="barHP"></div><p class="w">100</p></div>
+                    <div class="atk"><p class="title">Ataque</p><div class="bar⚔"></div><p class="w">73</p></div>
+                    <div class="dfn"><p class="title">Defensa</p><div class="bar🛡"></div><p class="w">83</p></div>
+                    <div class="spAttack"><p class="title">Ataque sp.</p><div class="bar🛡⚔"></div><p class="w">73</p></div>
+                    <div class="spDfn"><p class="title">Defensa sp.</p><div class="bar⚔🛡"></div><p class="w">83</p></div>
+                    <div class="speed"><p class="title">Velocidad</p><div class="bar🚅"></div><p class="w">55</p></div>
+                    <div class="total"><p class="title">Total</p><div class="totalbar"></div><p class="w">467</p></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Debilidades</h2>
+                <div class="weakness-grid"><div class="weakness-row"><span class="weakness-label">Normal</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Fuego</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Agua</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Eléctrico</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Planta</span><span class="weakness-value" data-value="0.5">½</span></div><div class="weakness-row"><span class="weakness-label">Hielo</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Lucha</span><span class="weakness-value" data-value="0.5">½</span></div><div class="weakness-row"><span class="weakness-label">Veneno</span><span class="weakness-value" data-value="0.5">½</span></div><div class="weakness-row"><span class="weakness-label">Tierra</span><span class="weakness-value" data-value="2">2</span></div><div class="weakness-row"><span class="weakness-label">Volador</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Psíquico</span><span class="weakness-value" data-value="2">2</span></div><div class="weakness-row"><span class="weakness-label">Bicho</span><span class="weakness-value" data-value="0.5">½</span></div><div class="weakness-row"><span class="weakness-label">Roca</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Fantasma</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Dragón</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Siniestro</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Acero</span><span class="weakness-value" data-value="1">1</span></div><div class="weakness-row"><span class="weakness-label">Hada</span><span class="weakness-value" data-value="0.5">½</span></div></div>
+            </div>
+
+            <div class="section">
+                <h2>Evoluciones</h2>
+                <div class="evolution-container"><div class="evolution-container">
+                    <div class="ev1">
+                        <div class="ev-card">
+                            <div class="ev-header"><span class="ev-level">Lv. 0</span><span class="ev-badge">Inicial</span></div>
+                            <a href="gulpin.html"><img src="../../assets/img/316.png" alt="Gulpin"></a>
+                            <p class="ev-name">Gulpin</p>
+                            <div class="types"><span class="type poison">Veneno</span></div>
+                        </div>
+                        <div class="arrow">➜</div>
+                    </div>
+                
+                    <div class="ev1">
+                        <div class="ev-card">
+                            <div class="ev-header"><span class="ev-level">Lv. 16</span><span class="ev-badge">Nivel</span></div>
+                            <a href="swalot.html"><img src="../../assets/img/317.png" alt="Swalot"></a>
+                            <p class="ev-name">Swalot</p>
+                            <div class="types"><span class="type poison">Veneno</span></div>
+                        </div>
+                        
+                    </div>
+                </div></div>
+            </div>
+
+            <div class="ubicacion">
+                <div class="label">📍 Ubicación</div>
+                <div class="value">No se encuentra en forma salvaje, obten mediante regalos, intercambios o evolución</div>
+            </div>
+        </div>
+    </body>
+</html>

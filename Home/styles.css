@@ -1,0 +1,518 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins Light', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1b1b2f 0%, #16213e 50%, #0f3460 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* ======================================== */
+/* CONTENIDO PRINCIPAL - PARA EVITAR SOLAPAMIENTO */
+/* ======================================== */
+.main-content {
+    width: 100%;
+    max-width: 800px;
+    margin-left: 300px;
+    transition: margin-left 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.aside.active ~ .main-content {
+    margin-left: 75px;
+}
+
+/* ======================================== */
+/* MENÚ LATERAL MEJORADO */
+/* ======================================== */
+.aside {
+    height: 100vh;
+    width: 300px;
+    padding: 15px 10px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.95) 20%, rgba(26,118,223,0.9) 100%);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    border-right: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 4px 0 30px rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.aside::-webkit-scrollbar {
+    width: 4px;
+}
+
+.aside::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+}
+
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile .img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow: 0 0 20px rgba(26,118,223,0.3);
+    transition: all 0.3s ease;
+    object-fit: cover;
+}
+
+.profile .img:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+    box-shadow: 0 0 30px rgba(26,118,223,0.6);
+}
+
+.profile p {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.bx-menu {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.bx-menu:hover {
+    transform: rotate(90deg) scale(1.1);
+}
+
+/* ======================================== */
+/* OPCIONES DEL MENÚ */
+/* ======================================== */
+.options div {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.options div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.options div:hover::before {
+    transform: translateX(0);
+}
+
+.options div:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.options div:active {
+    transform: scale(0.95);
+}
+
+.options img {
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 12px;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+}
+
+.options div:hover img {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+.option {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.options div:hover .option {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+/* ======================================== */
+/* MENÚ CERRADO */
+/* ======================================== */
+.aside.active {
+    width: 75px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.aside.active .option,
+.aside.active .profile p {
+    display: none;
+}
+
+.aside.active .profile .img {
+    width: 40px;
+    height: 40px;
+}
+
+.aside.active .head {
+    justify-content: center;
+}
+
+.aside.active .options div {
+    justify-content: center;
+    padding: 12px;
+}
+
+.aside.active .options img {
+    margin-right: 0;
+}
+
+.aside.active .options div:hover {
+    transform: scale(1.1);
+}
+
+/* ======================================== */
+/* TÍTULO PRINCIPAL */
+/* ======================================== */
+.tittleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+    position: relative;
+}
+
+.mainTitle {
+    color: #4a9eff;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 0 30px rgba(74, 158, 255, 0.3), 0 0 60px rgba(74, 158, 255, 0.1);
+    position: relative;
+}
+
+.mainTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #4a9eff, transparent);
+    border-radius: 2px;
+}
+
+/* ======================================== */
+/* BOTONES DE CONEXIÓN MEJORADOS */
+/* ======================================== */
+.div_connections {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.optionsA {
+    width: 100%;
+    max-width: 320px;
+    height: 60px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    background: linear-gradient(150deg, #9500ff, #0067ac, #004472);
+    background-size: 200% 200%;
+    border-radius: 12px;
+    color: #fff;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(149, 0, 255, 0.3);
+    z-index: 2;
+}
+
+.optionsA::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    transform: scale(0);
+    transition: transform 0.6s ease;
+}
+
+.optionsA:hover::before {
+    transform: scale(1);
+}
+
+.optionsA:hover {
+    transform: translateY(-3px) scale(1.02);
+    background-position: 100% 100%;
+    box-shadow: 0 8px 30px rgba(149, 0, 255, 0.5), 0 0 60px rgba(0, 103, 172, 0.3);
+}
+
+.optionsA:active {
+    transform: scale(0.95);
+}
+
+.optionsA img {
+    width: 1.6rem;
+    height: 1.6rem;
+    filter: brightness(0) invert(1);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.optionsA:hover img {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+.boton {
+    font-family: 'Poppins Light', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.optionsA:hover .boton {
+    text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* ======================================== */
+/* RESPONSIVE */
+/* ======================================== */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding-top: 10px;
+    }
+    
+    .aside.active ~ .main-content {
+        margin-left: 0;
+    }
+    
+    .aside {
+        width: 250px;
+    }
+    
+    .aside.active {
+        width: 60px;
+    }
+    
+    .mainTitle {
+        font-size: 2rem;
+    }
+    
+    .optionsA {
+        max-width: 280px;
+        height: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aside {
+        width: 100%;
+        height: 9rem;
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        border-radius: 20px 20px 0 0;
+        padding: 10px;
+        z-index: 1000;
+    }
+    
+    .aside.active {
+        width: 100%;
+        height: 9rem;
+        bottom: 0;
+        top: auto;
+    }
+    
+    .main-content {
+        padding-bottom: 120px;
+        margin-left: 0;
+    }
+    
+    .aside.active ~ .main-content {
+        margin-left: 0;
+    }
+    
+    .options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .options div {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    
+    .options img {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-right: 6px;
+    }
+    
+    .head {
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .profile .img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .profile p {
+        font-size: 0.8rem;
+    }
+    
+    .aside.active .option,
+    .aside.active .profile p {
+        display: inline;
+    }
+    
+    .aside.active .options div {
+        justify-content: flex-start;
+        padding: 8px 12px;
+    }
+    
+    .aside.active .options img {
+        margin-right: 6px;
+    }
+}
+
+@media (max-width: 380px) {
+    .aside {
+        width: 100%;
+        height: 9rem;
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        border-radius: 20px 20px 0 0;
+        padding: 10px;
+        z-index: 1000;
+    }
+    
+    .aside.active {
+        width: 100%;
+        height: 9rem;
+        bottom: 0;
+        top: auto;
+    }
+    
+    .main-content {
+        padding-bottom: 120px;
+        margin-left: 0;
+    }
+    
+    .aside.active ~ .main-content {
+        margin-left: 0;
+    }
+    
+    .options {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .options div {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+        margin-bottom: 0;
+    }
+    
+    .options img {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-right: 6px;
+    }
+    
+    .head {
+        height: 40px;
+        margin-bottom: 10px;
+    }
+    
+    .profile .img {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .profile p {
+        font-size: 0.8rem;
+    }
+    
+    .aside.active .option,
+    .aside.active .profile p {
+        display: inline;
+    }
+    
+    .aside.active .options div {
+        justify-content: flex-start;
+        padding: 8px 12px;
+    }
+    
+    .aside.active .options img {
+        margin-right: 6px;
+    }
+}
